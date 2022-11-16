@@ -9,9 +9,12 @@
 Defascan is a python tool that will scrape the internet for your given google dork queries using APIs and alert using the email provied during rutime.
 
 ## Installation
-`git clone https://github.com/test/test.git`
+`git clone https://github.com/RamXtha/DefaScan.git`
 
 `pip install -r requirements.txt`
+
+chromium
+`sudo apt install -y chromium-browser`
 
 ## Requirements
 Choose at least one of the given APIs for the program to run smoothly.
@@ -103,3 +106,4 @@ This file should contain the urls of the site that we donot wish to contact at a
 
 ### Record folder
 Record folder will how all the output including the htmls and pdfs generated durint the scan.
+
