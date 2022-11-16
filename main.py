@@ -104,7 +104,6 @@ def main(args):
             noapi_request = noapi(url,args.min,args.max)
             soup = BeautifulSoup(noapi_request, 'html.parser')
 
-            # print(soup)
 
             #quiting program when direct reqeust also fails
             if not soup:
@@ -135,7 +134,7 @@ def main(args):
                 if search2:
                     for h in search2:
                         res=h.a.get('href')
-                        url= re.search('(?<=url=)(.*)(?=&ved)',res)
+                        url= re.search('(?<=url\?q=)(.*)(?=&sa=)',res)
                         # print("search2:", url.group())
                         links.append(url.group())
                 
@@ -182,10 +181,11 @@ def main(args):
     print(f"[{datetime.datetime.now().strftime('%H:%M:%S')}] [INFO] Sending mail to admin")
     if (sender_mail!= None and admin_mail!=None and sender_pass!=None):
         send_gmail(sender_mail,admin_mail,sender_pass)
+        print(f"[{datetime.datetime.now().strftime('%H:%M:%S')}] [INFO] Main mail sent successfully")
     else:
         print(f"[{datetime.datetime.now().strftime('%H:%M:%S')}] [ERROR] Mail sent fail Sender or Admin Mail or credential Missing. Use -h for help.")
 
-    print(f"[{datetime.datetime.now().strftime('%H:%M:%S')}] [INFO] Main mail sent successfully")
+    
 
 
     #Scanning for affected user from our subscriber list

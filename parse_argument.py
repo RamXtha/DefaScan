@@ -15,7 +15,7 @@ def parse_args():
             # action="store",
             required=False,
             type=int,
-            default=37,
+            default=20,
             help="Minimum delay (in seconds) between a Google dork search.  Default: 37"
         )
     parser.add_argument(
@@ -23,7 +23,7 @@ def parse_args():
             # dest="maximum_delay_between_dork_searches_in_seconds",
             required=False,
             type=int,
-            default=60,
+            default=40,
             help="Maximum delay (in seconds) between a Google dork search.  Default: 60"
         )
     parser.add_argument(

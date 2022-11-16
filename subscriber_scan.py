@@ -24,12 +24,7 @@ def scan_link():
         # print(key_data[key])
         
         subscriber_file.close()
-    except Exception as e:
-        print(f'[{datetime.datetime.now().strftime("%H:%M:%S")}] [Error] Error in Subscriber file')
-        print("\ne")
-
-
-    for data in subscriber_data["Data"]:
+        for data in subscriber_data["Data"]:
 
                 #extracting url from file
                 durl=data["url"]
@@ -57,7 +52,16 @@ def scan_link():
 
                               print(f"[{datetime.datetime.now().strftime('%H:%M:%S')}] [Error] URL error")
     
-    return list(affected_users)
+                        return list(affected_users)
+
+
+
+    except Exception as e:
+        print(f'[{datetime.datetime.now().strftime("%H:%M:%S")}] [Error] Error in Subscriber file')
+        print("\ne")
+
+
+    
             
 
 

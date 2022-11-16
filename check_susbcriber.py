@@ -20,28 +20,29 @@ def check_subscriber(data):
         # print(key_data[key])
         
         subscriber_file.close()
+            #initializing empty array to store affected users
+        affected_subscriber=[]
+
+        for link in data:
+            #using regex to take out name from the url
+            link_search= re.search('(?<=\/\/)(.*?)(?=\/)',link)
+            linkname=link_search.group()
+
+            for subscriber in subscriber_data["Data"]:
+                #appending data of user to affaected_subscriber
+                if subscriber["name"] in linkname:
+                    subscriber["link"]=link
+                    affected_subscriber.append(subscriber)
+
+
+        return affected_subscriber
     except Exception as e:
         print(f'[{current_date.strftime("%H:%M:%S")}] [Error] Error in Subscriber file')
-        print("\ne")
+        # print("\ne")
 
     # print(subscriber_data)
 
-    #initializing empty array to store affected users
-    affected_subscriber=[]
 
-    for link in data:
-        #using regex to take out name from the url
-        link_search= re.search('(?<=:\/\/)(.*)(.np)',link)
-        linkname=link_search.group()
-
-        for subscriber in subscriber_data["Data"]:
-            #appending data of user to affaected_subscriber
-            if subscriber["name"] in linkname:
-                subscriber["link"]=link
-                affected_subscriber.append(subscriber)
-
-
-    return affected_subscriber
 
     
 

@@ -7,7 +7,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
-
+import datetime
 
    
 def send_gmail(sender,reciever,sender_pass,scan=False,indiv=False):
@@ -67,10 +67,11 @@ def send_gmail(sender,reciever,sender_pass,scan=False,indiv=False):
 
     try:
         # creates SMTP session
-        smtp_session = smtplib.SMTP('smtp.gmail.com', 587)
+        smtp_session = smtplib.SMTP_SSL('smtp.titan.email', 465)
+        
         
         # start TLS for security
-        smtp_session.starttls()
+        # smtp_session.starttls()
         
         # Converts the Multipart message into a string
         text = message.as_string()
@@ -85,12 +86,15 @@ def send_gmail(sender,reciever,sender_pass,scan=False,indiv=False):
     
         # terminating the session
         smtp_session.quit()
-        print("mail sent successfully!")
+        print(f"[{datetime.datetime.now().strftime('%H:%M:%S')}] [INFO] Mail Sent Successfully")
 
     except Exception as e:
-        print("Email failed.")
         print(e)
+        
 
 
-a=[{'suscriberID': 1, 'name': 'nationallife.com.np', 'email': 'nationallife@gmail.com', 'link': 'https://nationallife.com.np/cwne.html'}, {'suscriberID': 2, 'name': 'mercy.edu.np', 'email': 'nationallife@gmail.com', 'link': 'https://www.mercy.edu.np/site/'}, {'suscriberID': 3, 'name': 'bnkschool.edu.np', 'email': 'nationallife@gmail.com', 'link': 'https://bnkschool.edu.np/about/'}]
 
+# a=[{'suscriberID': 1, 'name': 'nationallife.com.np', 'email': 'nationallife@gmail.com', 'link': 'https://nationallife.com.np/cwne.html'}, {'suscriberID': 2, 'name': 'mercy.edu.np', 'email': 'nationallife@gmail.com', 'link': 'https://www.mercy.edu.np/site/'}, {'suscriberID': 3, 'name': 'bnkschool.edu.np', 'email': 'nationallife@gmail.com', 'link': 'https://bnkschool.edu.np/about/'}]
+# send_gmail('033b8041c28dcb','laxmanbahadurxhrextha@gmail.com','e41da95ecdaf98')
+
+# send_gmail('ayush@madu.ninja','haribahadurxhrextha@gmail.com','TesT7410!!')

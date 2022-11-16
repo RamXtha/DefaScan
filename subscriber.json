@@ -1,15 +1,6 @@
 {
 	"Data": [
 		{
-			"suscriberID": 1,
-			"name": "nationallife.com.np",
-			"url": [
-				"nationallife.com.np/cwne.html",
-				"nationallife.com.np/a.html"
-			],
-			"email": "laxmanbahadurxhrextha@gmail.com"
-		},
-		{
 			"suscriberID": 2,
 			"name": "mercy.edu.np",
 			"url": ["mercy.edu.np/site","mercy.edu.np"],

@@ -6,8 +6,9 @@ from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.utils import ChromeType
 from selenium.webdriver.chrome.options import Options
 chrome_options=Options()
-current_date = datetime.datetime.now()
-
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 
 
 #take screenshots from provided links
@@ -29,7 +30,27 @@ def take_screenshot(links):
             # fetching the urls
             driver.get(url)
             driver.set_page_load_timeout(50)
-            filename= re.search('(?<=:\/\/)(.*)(.np)',url)
+
+
+                        #Check to see if alert exists in page
+            try:
+                while True:
+
+                    alert = WebDriverWait(driver, 0.5).until(EC.alert_is_present())
+                    
+                    alert=driver.switch_to.alert;
+                    print(alert.text)
+                    alert.accept()
+
+                    print(f'[{current_date.strftime("%H:%M:%S")}] [info] Alert Exists in page {url}')
+
+                    if not alert:
+                       break 
+
+            except TimeoutException:
+                pass
+
+            filename= re.search('(?<=\/\/)(.*?)(?=\/)',url)
             f=filename.group()
 
             #collecting info for report
@@ -50,3 +71,6 @@ def take_screenshot(links):
     return data_for_template
 
 
+# a= ["https://www.arvisa.in/"]
+# # 
+# take_screenshot(a)

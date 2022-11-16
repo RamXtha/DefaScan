@@ -10,7 +10,7 @@ def retrieve_file_paths(dirName):
   filePaths = []
    
   # Reading file from current directory
-  for root,files in os.walk(dirName):
+  for root,none,files in os.walk(dirName):
     for filename in files:
         # Creating filepath
         filePath = os.path.join(root, filename)
